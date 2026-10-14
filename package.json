@@ -4,6 +4,13 @@
   "description": "eroq nodes for n8n: run your eroq Flows, generate images and videos, and start workflows when a run or a render finishes.",
   "license": "MIT",
   "homepage": "https://eroq.ai/developers",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eroqai/n8n-nodes-eroq.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eroqai/n8n-nodes-eroq/issues"
+  },
   "keywords": [
     "n8n-community-node-package",
     "n8n",
