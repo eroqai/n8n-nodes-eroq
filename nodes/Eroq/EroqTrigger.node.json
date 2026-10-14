@@ -1,0 +1,18 @@
+{
+  "node": "n8n-nodes-eroq.eroqTrigger",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": ["Marketing & Content", "Productivity"],
+  "resources": {
+    "credentialDocumentation": [
+      {
+        "url": "https://eroq.ai/docs/authentication"
+      }
+    ],
+    "primaryDocumentation": [
+      {
+        "url": "https://www.npmjs.com/package/n8n-nodes-eroq"
+      }
+    ]
+  }
+}

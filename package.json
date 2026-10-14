@@ -1,0 +1,55 @@
+{
+  "name": "@eroq/n8n-nodes-eroq",
+  "version": "0.1.0",
+  "description": "eroq nodes for n8n: run your eroq Flows, generate images and videos, and start workflows when a run or a render finishes.",
+  "license": "MIT",
+  "homepage": "https://eroq.ai/developers",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "eroq",
+    "ai",
+    "image generation",
+    "video generation",
+    "automation"
+  ],
+  "author": {
+    "name": "eroq",
+    "email": "hello@eroq.ai"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "test": "vitest run",
+    "prepublishOnly": "npm run lint && npm test && npm run build"
+  },
+  "files": [
+    "dist",
+    "!dist/tsconfig.tsbuildinfo"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/EroqApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Eroq/Eroq.node.js",
+      "dist/nodes/Eroq/EroqTrigger.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "^0.51.4",
+    "@types/node": "^22.20.5",
+    "eslint": "^9.39.4",
+    "n8n-workflow": "^2.42.3",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.11"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

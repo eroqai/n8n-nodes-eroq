@@ -1,0 +1,42 @@
+# Publishes n8n-nodes-eroq to npm with a provenance statement on every version
+# tag (0.2.0, 1.0.0…). n8n requires this for verified community nodes since
+# May 1, 2026.
+#
+# GitHub only runs workflows found at the ROOT of a repository: this file takes
+# effect once this folder is its own public repository, not inside the eroq
+# monorepo.
+#
+# One-time setup on npmjs.com: package settings → Publish access → Trusted
+# Publishers → GitHub Actions (owner, repository, workflow "publish.yml").
+# Without it, add an NPM_TOKEN repository secret (granular token, publish).
+
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    permissions:
+      # Mints the OIDC token behind trusted publishing and the provenance statement
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: npm
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: npm ci
+
+      # prepublishOnly runs the linter, the tests and the build first
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
