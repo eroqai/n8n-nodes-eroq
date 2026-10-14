@@ -1,6 +1,6 @@
 {
   "name": "@eroq/n8n-nodes-eroq",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "eroq nodes for n8n: run your eroq Flows, generate images and videos, and start workflows when a run or a render finishes.",
   "license": "MIT",
   "homepage": "https://eroq.ai/developers",
